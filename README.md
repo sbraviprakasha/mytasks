@@ -2,9 +2,9 @@
 Octalogic Tech first task
 <br>
 Author-Raviprakasha S B
-
-
 /*  here i'm using AWS Lambda with AWS DynamoDB and AppSync */
+
+
 /* This is the Lambda Code using JavaScript */
 
 var AWS = require('aws-sdk');
