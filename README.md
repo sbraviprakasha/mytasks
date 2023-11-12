@@ -4,7 +4,7 @@ Octalogic Tech first task
 Author-Raviprakasha S B
 /*  here i'm using AWS Lambda with AWS DynamoDB and AppSync */
 
-
+/* ********** started Lambda Code ********* */
 /* This is the Lambda Code using JavaScript */
 
 var AWS = require('aws-sdk');
@@ -88,3 +88,48 @@ exports.handler = async (event) => {
       throw new Error("command not Found!");
   }
 };
+
+/* ********* end Lambda code *** */
+
+/* sample lambda inputs for testing */ 
+{
+  "command": "BookVehicles",
+  "user_first_name": "Raviprakasha",
+  "user_last_name": "S B",
+  "vehicle_number": "KA 01 12345",
+  "number_of_wheels": 2,
+  "type_of_vehicle": "Sports",
+  "Model_name": "Apache RTR",
+  "vehicle_rent_start_date": "12/11/2023",
+  "vehicle_rent_end_date": "15/11/2023"
+}
+
+/* if u are using aws Appsync ==> */
+*/ GraphQL schema for graphQL APi */
+input bookVehiclesInput {
+	vehicle_number: String!
+	user_first_name: String
+	user_last_name: String
+	number_of_wheels: ID
+	type_of_vehicle: String
+	Model_name: String
+	vehicle_rent_start_date: String
+	vehicle_rent_end_date: String
+}
+
+type Mutation {
+	bookVehicles(input: bookVehiclesInput): AWSJSON
+}
+
+type Query {
+	GetVehicles(vehicle_number: ID!): AWSJSON
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
+
+// end of schema
+
+// this is GraphQl end point APi : https://yjoglsonvjguncwok356nghmue.appsync-api.ap-southeast-1.amazonaws.com/graphql
