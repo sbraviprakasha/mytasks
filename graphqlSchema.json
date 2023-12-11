@@ -1,0 +1,23 @@
+input bookVehiclesInput {
+	vehicle_number: String!
+	user_first_name: String
+	user_last_name: String
+	number_of_wheels: ID
+	type_of_vehicle: String
+	Model_name: String
+	vehicle_rent_start_date: String
+	vehicle_rent_end_date: String
+}
+
+type Mutation {
+	bookVehicles(input: bookVehiclesInput): AWSJSON
+}
+
+type Query {
+	GetVehicles(vehicle_number: ID!): AWSJSON
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+}
